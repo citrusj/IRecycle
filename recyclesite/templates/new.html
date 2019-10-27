@@ -1,0 +1,144 @@
+<form method="POST" class="post-form" enctype="multipart/form-data"> {%csrf_token%}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+
+{% load static %}
+<html>
+	<head>
+		<title>iRecycle</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css'%}" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<img src="{% static 'images/i-recycle.png' %}" alt=""/>
+						<br/>
+						<h1>iRecycle</h1>
+						<p>Recycling for Social Good</p>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="#intro" class="active">Our Mission</a></li>
+							<li><a href="#first"> Items to Recycle </a></li>
+							<li><a href="#second"> Tracker </a></li>
+							<li><a href="#cta"> Get Started </a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+					
+							
+
+						<!-- Second Section -->
+						<section id="second" class="main special">
+								<header class="major">
+									<h2>Try it out! Upload a picture</h2>
+								</header>
+								<footer class="major">
+									<ul class="actions special">
+                                            <li><a href="{%url 'new'%}" class="button">Upload</a></li>
+
+									</ul>
+								</footer>
+							</section>
+
+						<!-- Third Section -->
+							<section id="second" class="main special">
+								<header class="major">
+									<h2>Recycling Tracker</h2>
+									<p>Track what you're recycling right here</p>
+								</header>
+								<ul class="statistics">
+									<li class="style1">
+										<span><img src="{% static '/images/plastic-icon.png' %}" alt=""/></span>
+										<strong>
+                                        {% for item in group%}
+                                            {% if item.category == "Plastic" %}
+                                            {{item.count}}
+                                            {% endif %}
+                                        {%endfor%}
+                                        </strong> PLASTIC
+									</li>
+									<li class="style2">
+										<span><img src="{% static 'images/can-icon.png' %}" alt=""/></span>
+										<strong>
+                                        {% for item in group%}
+                                            {% if item.category == "Can" %}
+                                            {{item.count}}
+                                            {% endif %}
+                                        {%endfor%}
+                                        </strong> METAL
+									</li>
+									<li class="style3">
+										<span><img src="{% static 'images/cardboard-icon.png' %}" alt=""/></span>
+										<strong>
+                                        {% for item in group%}
+                                            {% if item.category == "Cardboard" %}
+                                            {{item.count}}
+                                            {% endif %}
+                                        {%endfor%}
+                                        </strong> CARDBOARD
+									</li>
+									<li class="style4">
+										<span><img src="{% static 'images/glass-icon.png' %}" alt=""/></span>
+										<strong>
+                                        {% for item in group%}
+                                            {% if item.category == "Glass" %}
+                                            {{item.count}}
+                                            {% endif %}
+                                        {%endfor%}
+                                        </strong> GLASS
+									</li>
+									<li class="style5">
+										<span><img src="{% static 'images/compost-icon.png' %}" alt=""/></span>
+										<strong>
+                                        {% for item in group%}
+                                            {% if item.category == "Compost" %}
+                                            {{item.count}}
+                                            {% endif %}
+                                        {%endfor%}
+                                        </strong> COMPOST
+									</li>
+								</ul>
+								<p class="content">This tracker counts items that have been recycled through iRecycle</p>
+								<footer class="major">
+									<ul class="actions special">
+										<li><a href="generic.html" class="button">Learn More</a></li>
+									</ul>
+								</footer>
+							</section>
+
+						<!-- Get Started -->
+							
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<p class="copyright">© YoonJin Jung, Amalia Torres, Nadine Rodriguez</p>
+				</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrollex.min.js'%}"></script>
+			<script src="{% static 'assets/js/jquery.scrolly.min.js'%}"></script>
+			<script src="{% static 'assets/js/browser.min.js'%}"></script>
+			<script src="{% static 'assets/js/breakpoints.min.js'%}"></script>
+			<script src="{% static 'assets/js/util.js'%}"></script>
+			<script src="{% static 'assets/js/main.js'%}"></script>
+
+	</body>
+</html>

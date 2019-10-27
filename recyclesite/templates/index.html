@@ -1,0 +1,253 @@
+{% load static %}
+<html>
+	<head>
+		<title>iRecycle</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css'%}" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<img src="{% static 'images/i-recycle.png' %}" alt=""/>
+						<br/>
+						<h1>iRecycle</h1>
+						<p>Recycling for Social Good</p>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="#intro" class="active">Our Mission</a></li>
+							<li><a href="#first"> Items to Recycle </a></li>
+							<li><a href="#second"> Tracker </a></li>
+							<li><a href="#cta"> Get Started </a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Introduction -->
+							<section id="intro" class="main">
+                            <div class="content" style="text-align: center;"><h3 style="color: #66638; font-size: 25px">New York City has no landfills or incinerators, yet residents produce 12,000 tons of waste everyday</h3></div><br>	
+                                <div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2 style="color: #013220; font-size: 40px">Our Mission</h2>
+										</header>
+                                        <p style="color: #013220;">Our mission is to help NYC residents become eco-friendlly.<br><p> 
+                                        <p>You Should Use iRecycle if you:</p>
+										<p> 1. Are a New York City resident unsure of where your recyclable trash belongs</p>
+                                        <p> 2. Want to be part of a community of Recyclers</p>
+                                        <p> 3. Care about the environment</p>
+									</div>
+									<span id = "recycle-image" class = "image"id="image-recycle"><img src="{% static 'images/people-recycling2.jpg' %}" alt=""></span>
+								</div>
+							</section>
+
+						<!-- First Section -->
+							<section id="first" class="main special">
+								<header class="major">
+									<h2>What Are We Sorting?</h2>
+								</header>
+								<ul class="features">
+									<li>
+										<div class="box alt">
+											<div class="row gtr-uniform">
+												<div class="col-12"><img src="{% static 'images/plastic.jpg' %}" alt=""/></div>
+											</div>
+										</div>
+										<h3>Plastic</h3>
+										<p>2.5 million plastic bottles are thrown away every hour in America.</p>
+									</li>
+									<li>
+										<div class="box alt">
+											<div class="row gtr-uniform">
+												<div class="col-12"><img src="{% static 'images/glass.jpg' %}" alt="" /></div>
+											</div>
+										</div>
+										<h3>Glass</h3>
+										<p>A modern glass bottle would take 4,000 years or more to decompose</p>
+									</li>
+									<li>
+										<div class="box alt">
+											<div class="row gtr-uniform">
+												<div class="col-12"><img src="{% static 'images/can.jpg' %}" alt="" /></div>
+											</div>
+										</div>
+										<h3>Cans</h3>
+										<p>Aluminum can be recycled forever without any loss of quality.</p>
+									</li>
+									<li>
+										<div class="box alt">
+											<div class="row gtr-uniform">
+												<div class="col-12"><img src="{% static 'images/cardboard.jpg' %}" alt="" /></div>
+											</div>
+										</div>
+										<h3>Cardboard</h3>
+										<p>One ton of recycled cardboard saves 9 cubic yards of landfill space.</p>
+									</li>
+									<li>
+										<div class="box alt">
+											<div class="row gtr-uniform">
+												<div class="col-12"><img src="{% static 'images/compost.jpg' %}" alt=""/></div>
+											</div>
+										</div>
+										<h3>Compost</h3>
+										<p>Nearly half of the food in the U.S. goes to waste</p>
+									</li>
+									<li>
+										<div class="box alt">
+											<div class="row gtr-uniform">
+												<div class="col-12"><img src="{% static 'images/trash.jpg' %}" alt=""/></div>
+											</div>
+										</div>
+										<h3>Non-Recyclables</h3>
+										<p>The average person generates 4.4 pounds of solid waste every day</p>
+									</li>
+								</ul>
+							</section>
+
+						<!-- Second Section -->
+						<section id="second" class="main special">
+								<header class="major">
+									<h2>Try it out! Upload a picture</h2>
+								</header>
+								<footer class="major">
+									<ul class="actions special">
+                                        <form method="POST" class="post-form" enctype="multipart/form-data"> {%csrf_token%}
+                                                {{ form.as_p }}
+                                                <li><button type="submit" class="button" ><b>Upload</b></button></li>
+                                        </form>
+                                            
+
+									</ul>
+								</footer>
+							</section>
+
+						<!-- Third Section -->
+							<section id="second" class="main special">
+								<header class="major">
+									<h2>Recycling Tracker</h2>
+									<p>Track what you're recycling right here</p>
+								</header>
+								<ul class="statistics">
+									<li class="style1">
+										<span><img src="{% static '/images/plastic-icon.png' %}" alt=""/></span>
+										<strong>
+                                        {% for item in group%}
+                                            {% if item.category == "Plastic" %}
+                                            {{item.count}}
+                                            {% endif %}
+                                        {%endfor%}
+                                        </strong> PLASTIC
+									</li>
+									<li class="style2">
+										<span><img src="{% static 'images/can-icon.png' %}" alt=""/></span>
+										<strong>
+                                        {% for item in group%}
+                                            {% if item.category == "Can" %}
+                                            {{item.count}}
+                                            {% endif %}
+                                        {%endfor%}
+                                        </strong> METAL
+									</li>
+									<li class="style3">
+										<span><img src="{% static 'images/cardboard-icon.png' %}" alt=""/></span>
+										<strong>
+                                        {% for item in group%}
+                                            {% if item.category == "Cardboard" %}
+                                            {{item.count}}
+                                            {% endif %}
+                                        {%endfor%}
+                                        </strong> CARDBOARD
+									</li>
+									<li class="style4">
+										<span><img src="{% static 'images/glass-icon.png' %}" alt=""/></span>
+										<strong>
+                                        {% for item in group%}
+                                            {% if item.category == "Glass" %}
+                                            {{item.count}}
+                                            {% endif %}
+                                        {%endfor%}
+                                        </strong> GLASS
+									</li>
+									<li class="style5">
+										<span><img src="{% static 'images/compost-icon.png' %}" alt=""/></span>
+										<strong>
+                                        {% for item in group%}
+                                            {% if item.category == "Compost" %}
+                                            {{item.count}}
+                                            {% endif %}
+                                        {%endfor%}
+                                        </strong> COMPOST
+									</li>
+								</ul>
+								<div class="content" style="text-align: center;"><h3 style="color: #66638; font-size: 20px">This tracker counts items that have been recycled through iRecycle. 
+                                As more people begin to recycle, watch the numbers grow! For more informationon recycling and to learn what services the New York City department of Sanition provide
+                                visit the DSNY website below</h3>
+								<footer class="major">
+									<ul class="actions special">
+										<li><a href="https://www1.nyc.gov/assets/dsny/site/services" target="_blank" class="button">Learn More</a></li>
+									</ul>
+								</footer>
+							</section>
+
+						<!-- Get Started -->
+							<section id="cta" class="main special">
+								<header class="major">
+									<h2>Software & Hardware</h2>
+
+								<!-- Software Used-->
+										<ul class="features">
+											<li class="style1">
+												<div class="box alt">
+													<div class="row gtr-uniform">
+														<a href="https://cloud.google.com/" target="_blank" class="col-12"><span class="image fit"><img class="fade" src="{% static 'images/googlecloud3.png' %}"/></span></a>
+													</div>
+												</div>
+											</li>
+											<li class = "style2">
+												<div class="box alt">
+													<div class="row gtr-uniform">
+														<a  href="https://www.arduino.cc/en/Main/Software" target="_blank" class="col-12"><span class="image fit"><img class="fade" src="{% static 'images/arduino.jpg' %}" /></span></a>
+													</div>
+												</div>
+											</li>
+											<li class="style3">
+												<div class="box alt">
+													<div class="row gtr-uniform">
+<a  href="https://www.arduino.cc/en/Main/Software" target="_blank" class="col-12"><span class="image fit"><img class="fade" src="{% static 'images/django.png' %}" /></span></a>													</div>
+												</div>
+											</li>
+
+										</ul>
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<p class="copyright">© YoonJin Jung, Amalia Torres, Nadine Rodriguez</p>
+				</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrollex.min.js'%}"></script>
+			<script src="{% static 'assets/js/jquery.scrolly.min.js'%}"></script>
+			<script src="{% static 'assets/js/browser.min.js'%}"></script>
+			<script src="{% static 'assets/js/breakpoints.min.js'%}"></script>
+			<script src="{% static 'assets/js/util.js'%}"></script>
+			<script src="{% static 'assets/js/main.js'%}"></script>
+
+	</body>
+</html>
+
