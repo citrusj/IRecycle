@@ -4,6 +4,8 @@
  재활용을 할 줄 모르는 뉴욕 시민을 위해, 이미지로부터 사물을 인식하여 재활용을 자동으로 분류해주는 서비스
 * ##### created by: Yoonjin Jung, amalia torres, Nadine Rodriguez
 
+![classify](https://user-images.githubusercontent.com/37509450/93201824-ab524880-f78c-11ea-9145-374362454539.png)
+![tracker](https://user-images.githubusercontent.com/37509450/93201827-ac837580-f78c-11ea-976e-fe992e488095.png)
 
 ## :trophy: Won Techtogether NYC Hackathon in Oct 29, 2019
 * Best NYC Hack
